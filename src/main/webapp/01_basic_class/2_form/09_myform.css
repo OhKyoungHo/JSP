@@ -108,7 +108,7 @@ form input:not([type=radio]) {
 	width: 200px;
 }
 					
-form input:not([type=submit]):focus, {
+form input:not([type=submit]):focus {
 	background: #eaeaea;
 }
 					
