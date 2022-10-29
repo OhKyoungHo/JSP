@@ -11,7 +11,8 @@
  int sal	  	  = Integer.parseInt(request.getParameter("sal"));
  
  
- //2. EmpVo 멤버변수에 지정 
+ //2. EmpVo 멤버변수에 지정 (해당 클래스에 getter/setter 해놓음)
+ 	//저장할 새로운 변수 생성
 	EmpVO vo= new EmpVO();
  	vo.setEmpno(empno);	 
  	vo.setEname(ename);	

@@ -19,11 +19,12 @@
 	// 4. 전송 객체 얻어오기
 		PreparedStatement ps = con.prepareStatement(sql);
 	// 5. 전송
+	//ExecuteQuery : SELECT(ResultSet 객체에 결과값을 담을 수 있습니다.)
+	//ExecuteUpdate : INSERT / DELETE / UPDATE
+		
 		ResultSet rs = ps.executeQuery(sql);
 		System.out.println(rs + "행을 실행");
-
 %>
-
 
 <!DOCTYPE html>
 <html><head><title> 디비 테스트 </title>

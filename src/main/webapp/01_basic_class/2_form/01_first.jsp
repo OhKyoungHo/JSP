@@ -14,7 +14,7 @@
 <form action="01_second.jsp" method="post"><!-- get 방식이면 주소창에 id와 비밀번호가 나오게됨, post를 통해 안보이게 함 -->
 사용자: <input name='User' type='text'><br/>
 비밀번호: <input name='Pass' type='password'><br/>
-<input type='submit' value='login'> <!--sumit : 사용자 입력값을 서버로 전송  -->
+<input type='submit' value='login'> <!-- sumit : 사용자 입력값을 서버로 전송  -->
 </form>
 
 </body>

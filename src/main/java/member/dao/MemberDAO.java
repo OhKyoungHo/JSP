@@ -12,7 +12,7 @@ public class MemberDAO {
 	}
 	//싱글톤에서는 하나의 하나'의 인스턴스만 생성하여 사용하기 때문에 없는 경우에만 
 	//객체를 생성하는 것으로 설정해서 식을 작성
-	static MemberDAO memberDAO = null;
+	static MemberDAO memberDAO = null;	//객체 생성해서 null 값으로 설정
 	public static MemberDAO getInstance() throws Exception{
 		//memberDAO ==null인 경우에 MemberDAO 객체 생성
 		if(memberDAO ==null) memberDAO = new MemberDAO();
@@ -32,7 +32,7 @@ public class MemberDAO {
 			con = DriverManager.getConnection(url, user, pass);
 			System.out.println("디비 연결 성공");
 			// 3. sql 문장 만들기
-			String sql = "INSERT INTO form( realname, nickname, email, age ) VALUES(?,?,?,?)";
+			String sql = "INSERT INTO form(realname, nickname, email, age) VALUES(?,?,?,?)";
 			// 4. 전송 객체 얻어오기
 			ps = con.prepareStatement(sql);
 			ps.setString(1, vo.getRealname());

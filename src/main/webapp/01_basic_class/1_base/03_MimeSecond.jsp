@@ -28,7 +28,7 @@ public void DBLoading(){
 <%-- MIME 타입 변경하기 --%>
 <%
 	/*
-	요청(request) : 클라이언트 → 서버
+	요청(request)  : 클라이언트 → 서버
 	응답(responcse): 서버 → 클라이언트
 	*/
 
