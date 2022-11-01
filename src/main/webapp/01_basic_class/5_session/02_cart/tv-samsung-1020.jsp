@@ -44,6 +44,7 @@ TV와 VTR을 겸용으로 사용할수 있는 인체공학적 간단 리모컨�
 <input type='hidden' name='name' value="삼성 TV CT 14R1"> 
 <input type='hidden' name='price' value="147000"> 
 <input type='submit' value="장바구니"> 
+<!-- submit 버튼 클릭하면 id, name, price의 value가 Cart.jsp로 전달  -->
 </form> 
  
 </body> 

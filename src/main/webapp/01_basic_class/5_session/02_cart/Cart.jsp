@@ -4,19 +4,32 @@
 <%@ page import="java.util.*" %>
 <%@ page import="shop.cart.Goods" %> 
 <%
-	String id="";
-	String name ="";
-	int price=0;
-
+	String id= "";
+	String name = "";
+	int price= 0;
+	//ArrayList<Goods>의 새로운 변수를 null로 선언
 	ArrayList<Goods> glist = null;
-
 	request.setCharacterEncoding("utf-8");
-	
 	// 1. Form의 값(hidden값) 넘겨받기 ( id, name, price )
+	id= request.getParameter("id");
+	name =request.getParameter("name");
+	price=Integer.parseInt(request.getParameter("price"));
 	// 2. 세션의 cart 속성을 얻어온다. 
+	Object obj = session.getAttribute("cart");
 	// 3. 만일 null이면 ArrayList 객체 새로 생성하고 그렇지 않으면 ArrayList 변수(glist)에 지정
-	// 4. 1번의 값들을 Goods 객체로 생성후 ArrayList 에 추가
+	if (obj == null) {
+		glist = new ArrayList<Goods>();	//없는 경우
+	} else {
+		glist = (ArrayList<Goods>)obj;	//있는 경우에는 기존에 있는 주소값을 받아와서 자료형에 맞게 형 변환
+	}
+
+	// 4. ★1번의 값들을 Goods 객체로 생성후★(잊지말기) ArrayList 에 추가
+	//Goods g = new Goods(id, name, price);
+	//glist.add(g);
+	glist.add(new Goods(id, name, price));
+	
 	// 5. 세션에 cart 라는 이름에 ArrayList를 저장
+	session.setAttribute("cart", glist); 
 
 %>		 
 		 

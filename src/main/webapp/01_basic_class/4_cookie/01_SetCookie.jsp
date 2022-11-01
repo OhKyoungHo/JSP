@@ -4,11 +4,11 @@
 
 <%	
 	// 1. Cookie 객체 생성
-	
+	Cookie c= new Cookie("yourid","oh");
 	// 2. 속성 부여
-	
-	// 3. 클라이언트에 쿠키 전송
-	
+	c.setMaxAge(1*60*3);//3분(if 180으로 주면 읽기 늦어질 수 있음)
+	// 3. 클라이언트에 쿠키 전송(값을 보내는 경우에는 response)
+	response.addCookie(c);
 %>
 
 <html>
