@@ -15,5 +15,31 @@
   	<servlet-name>HelloServlet</servlet-name>
  	<url-pattern>/HelloServlet</url-pattern>
   </servlet-mapping>
+ 
+  <!--SimpleControl이라는 파일을 찾아서 실행  -->
+   <servlet>
+  	<servlet-name>SimpleControl</servlet-name>
+  	<servlet-class>mvc.simple.SimpleControl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>SimpleControl</servlet-name>
+ 	<url-pattern>/SimpleControl</url-pattern>
+ 	<url-pattern>*.oh</url-pattern><!--web.xml에서 url 방식을 추가하면서 확장자명을 지정할 수 있다.-->
+  </servlet-mapping>
+  
+  <!--GuestControl이라는 파일을 찾아서 실행  -->
+  <servlet>
+  	<servlet-name>GuestControl</servlet-name>
+  	<servlet-class>mvc.guest.control.GuestControl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>GuestControl</servlet-name>
+ 	<url-pattern>/GuestControl</url-pattern>
+ 	<url-pattern>*.do</url-pattern><!--web.xml에서 url 방식을 추가하면서 확장자명을 지정할 수 있다.-->
+  </servlet-mapping>
+  
+  
   
 </web-app>
