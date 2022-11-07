@@ -175,6 +175,47 @@ public class MessageDao {
 	}
 	
 	
+	//메세지 제목 클릭 시, 상세 메세지 내용 가져올 때 (view)
+	
+			public Message selectById(int id) throws MessageException
+			{
+				PreparedStatement ps = null;
+				ResultSet rs = null;
+				Message m = null;
+				try{
+
+					con	= DriverManager.getConnection( dbUrl, dbUser, dbPass );
+					String sql		= "SELECT * FROM guestTB WHERE message_id=?";  
+					ps		= con.prepareStatement( sql );
+					ps.setInt(1, id);
+					
+					rs = ps.executeQuery();
+					if( rs.next())
+					{
+						
+						
+						int message_id = rs.getInt("message_id");
+						String guest_name = rs.getString("guest_name");
+						String password = rs.getString("password");
+						String message = rs.getString("message");
+						
+						m = new Message(message_id, guest_name, password, message );
+						
+					}
+					
+				
+					
+					return m;
+				}catch( Exception ex ){
+					throw new MessageException("방명록 ) DB에 목록 검색시 오류  : " + ex.toString() );	
+				} finally{
+					if( rs   != null ) { try{ rs.close();  } catch(SQLException ex){} }
+					if( ps   != null ) { try{ ps.close();  } catch(SQLException ex){} }
+					if( con  != null ) { try{ con.close(); } catch(SQLException ex){} }
+				}		
+			}
+	
+	
 	
 	/* -------------------------------------------------------
 	 * 메세지 전체 레코드 수를 검색
@@ -228,30 +269,29 @@ public class MessageDao {
 		}		
 	}
 
-	public int update( String msg, int messageId ) throws MessageException
+	public int update( Message vo ) throws MessageException
 	{
-
 		PreparedStatement ps = null;
 		try{
-			
+
 			con	= DriverManager.getConnection( dbUrl, dbUser, dbPass );
-			// * sql 문장만들기
-			String sql= "UPDATE guesttb SET message=? where message_id=?";
-			// * 전송객체 얻어오기
-			 Message msg1 = new Message();
-			ps = con.prepareStatement(sql);
-			ps.setString(1,msg1.getMessage() );
-			ps.setInt(2, msg1.getId());
+			
+			String sql		= "UPDATE GuestTB SET MESSAGE = ?  WHERE message_id=? AND password=?";  
+
+			ps		= con.prepareStatement( sql );
+			
+			ps.setString	( 1, vo.getMessage()	);
+			ps.setInt		( 2, vo.getId()	);
+			ps.setString	( 3, vo.getPassword()	);
 			
 			return ps.executeUpdate();
-		
+					
 		}catch( Exception ex ){
-			throw new MessageException("게시판 ) 게시글 수정시 오류  : " + ex.toString() );	
+			throw new MessageException("방명록 ) DB에 수정시 오류  : " + ex.toString() );	
 		} finally{
 			if( ps   != null ) { try{ ps.close();  } catch(SQLException ex){} }
 			if( con  != null ) { try{ con.close(); } catch(SQLException ex){} }
-		}
-		
+		}		
 	}
 
 

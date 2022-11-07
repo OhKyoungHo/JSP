@@ -14,6 +14,8 @@ import mvc.guest.command.CommandDelete;
 import mvc.guest.command.CommandException;
 import mvc.guest.command.CommandInput;
 import mvc.guest.command.CommandList;
+import mvc.guest.command.CommandModify;
+import mvc.guest.command.CommandModifyForm;
 import mvc.guest.command.CommandNull;
 
 /**
@@ -44,6 +46,8 @@ public class GuestControl extends HttpServlet {
 		commandMap.put("input-do", new CommandInput("saveMessage.jsp"));
 		commandMap.put("delete-form", new CommandNull("deleteMessage.jsp"));
 		commandMap.put("delete-do", new CommandDelete("deleteConfirm.jsp"));
+		commandMap.put("modify-form", new CommandModifyForm("modifyForm.jsp"));
+		commandMap.put("modify-do", new CommandModify("modifyMessage.jsp"));
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

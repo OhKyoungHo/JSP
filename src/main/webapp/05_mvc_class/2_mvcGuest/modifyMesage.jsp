@@ -2,22 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ page import="mvc.guest.*" %>
 
+
 <%
 	// 0. 넘겨받는 데이타의 한글 처리
-	 request.setCharacterEncoding("utf-8");
-%>
-
-<!-- 1. 이전 화면의 입력값을 넘겨받아 Message 객체의 각 멤버변수로 지정 -->
-<jsp:useBean id="msg" class="mvc.guest.model.Message">
-	<jsp:setProperty name='msg' property='*'/>
-</jsp:useBean>
- 
-<%
-	// 2. Service에 update() 호출하여 레코드 수정
-	int result =0;
+	response.setCharacterEncoding("UTF-8");
 	
+	Integer result = (Integer)request.getAttribute("result"); %>
 
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,15 +16,15 @@
 <title>게시판글수정</title>
 </head>
 <body>
-
+<% if( result == 0  ) { %>
+		암호가 잘못 입력되었습니다.
+	<% } else { %>
+		수정이 성공되었습니다.
+	<% } %>
 <%  // 게시글 수정이 성공적으로 되었다면 그 해당 게시글을 보여주는 페이지로 이동하고
     // 그렇지 않다면, "암호가 잘못 입력되었습니다"를 출력
+	
 %>
- <% if (result==1 ) { %>
-	 <jsp:forward page="GuestControl?cmd=page-list"></jsp:forward>
-  <%   } else { %>
-    	암호가 잘못 입력되었습니다.<br/>
-    	
-    <% } %>
+<a href="GuestControl?cmd=list-page"> [ 목록보기 ] </a>
 </body>
 </html>
